@@ -7,5 +7,12 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            emailext body: 'Succesfully build' recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                                                   subject: 'Test', to: 'janhavi.parte@thoughtworks.com'
+        }
+    }
 }
+
 
