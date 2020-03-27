@@ -9,7 +9,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh './gradlew test'
-                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
+                junit 'allowEmptyResults: true , /Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
             }
         }
     }
