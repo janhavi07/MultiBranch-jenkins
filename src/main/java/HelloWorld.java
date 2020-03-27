@@ -8,4 +8,9 @@ public class HelloWorld {
         return result;
     }
 
+    public String addYourName(String fname,String lname) {
+        String fullName =fname+ " " + lname;
+        return fullName;
+    }
+
 }

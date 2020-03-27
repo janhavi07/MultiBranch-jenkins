@@ -12,5 +12,14 @@ public class HelloWorldTest {
         Assert.assertEquals(result,11);
     }
 
+    @Test
+    public void concatTwoWords(){
+        HelloWorld obj=new HelloWorld();
+        String yourName = obj.addYourName("janhavi", "parte");
+        Assert.assertEquals(yourName,"janhavi parte");
+
+
+    }
+
 
 }
