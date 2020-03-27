@@ -3,19 +3,25 @@ pipeline {
     stages {
         stage(' Build') {
             steps {
-                sh '''
-                ./gradlew build
-                gradle test --tests HelloWorldTest
-                '''
-
+                sh './gradlew build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew check'
             }
         }
     }
-    post {
+   post {
+           always {
+               junit allowEmptyResults: true, healthScaleFactor: 1.1, testResults: '/build/test-reports/*.xml'
+           }
+   }
+   post {
         success {
             emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
         }
-    }
+   }
 }
 
 
