@@ -9,6 +9,8 @@ public class HelloWorldTest {
     public void addTwoNumbers() {
         HelloWorld obj=new HelloWorld();
         int result = obj.addTwoNumbers(12, 1);
-        Assert.assertEquals(result,13);
+        Assert.assertEquals(result,11);
     }
+
+
 }

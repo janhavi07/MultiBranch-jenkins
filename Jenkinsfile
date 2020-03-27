@@ -9,9 +9,11 @@ pipeline {
         stage('Test') {
             steps {
                 sh './gradlew test'
+                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
             }
         }
     }
+
    post {
         success {
             emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
