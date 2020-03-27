@@ -3,14 +3,17 @@ pipeline {
     stages {
         stage(' Build') {
             steps {
-                sh ' ./gradlew build'
+                sh '''
+                ./gradlew build
+                gradle test --tests HelloWorldTest
+                '''
+
             }
         }
     }
     post {
         success {
-            emailext body: 'A test email' recipientProviders : [[$class: 'DevelopersRecipientProvider'], [$class : 'RequesterRecipientProvider']],
-                                                   subject : 'Test'
+            emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
         }
     }
 }
