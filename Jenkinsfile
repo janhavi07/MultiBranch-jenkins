@@ -27,7 +27,10 @@ pipeline {
                 mail to: 'janhavi.parte@thoughtworks.com',
                      subject: "Pipeline Status : ${currentBuild.fullDisplayName}",
                      body: "Check with : ${env.BUILD_URL}"
-            }
+                }
+         always {
+                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
+         }
    }
 }
 
