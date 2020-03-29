@@ -8,6 +8,7 @@ pipeline {
                 steps {
                     retry(2) {
                         sh './gradlew build'
+                    }
                 }
             }
             stage('Test') {
