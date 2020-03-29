@@ -23,7 +23,7 @@ public class HelloWorldTest {
     public void happySadMoods(){
         HelloWorld obj=new HelloWorld();
         boolean happySad = obj.happySad();
-        Assert.assertTrue(happySad);
+        Assert.assertFalse(happySad);
     }
 
 

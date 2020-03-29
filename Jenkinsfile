@@ -14,7 +14,7 @@ pipeline {
             stage('Test') {
                 steps {
                     sh './gradlew test'
-                    junit allowEmptyResults: true ,testResults:'  /Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
+                    junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
             }
         }
     }
@@ -29,7 +29,7 @@ pipeline {
                      body: "Check with : ${env.BUILD_URL}"
                 }
          always {
-                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/*.xml'
+                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
          }
    }
 }
