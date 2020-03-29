@@ -20,9 +20,14 @@ pipeline {
     }
 
    post {
+        //success {
+          //  emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
+        //}
         success {
-            emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
-        }
+                mail to: 'janhavi.parte@thoughtworks.com',
+                     subject: "Pipeline Status : ${currentBuild.fullDisplayName}",
+                     body: "Check with : ${env.BUILD_URL}"
+            }
    }
 }
 
