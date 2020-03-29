@@ -13,4 +13,8 @@ public class HelloWorld {
         return fullName;
     }
 
+    public boolean happySad(){
+        return true;
+    }
+
 }

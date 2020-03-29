@@ -17,8 +17,13 @@ public class HelloWorldTest {
         HelloWorld obj=new HelloWorld();
         String yourName = obj.addYourName("janhavi", "parte");
         Assert.assertEquals(yourName,"janhavi parte");
+    }
 
-
+    @Test
+    public void happySadMoods(){
+        HelloWorld obj=new HelloWorld();
+        boolean happySad = obj.happySad();
+        Assert.assertTrue(happySad);
     }
 
 
