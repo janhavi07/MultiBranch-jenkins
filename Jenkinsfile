@@ -1,37 +1,10 @@
 pipeline {
-    agent any
-       triggers {
-              cron('H/15 * * * *')
-       }
-       stages {
-            stage(' Build') {
-                steps {
-                    retry(2) {
-                        sh './gradlew build'
-                    }
-                }
-            }
-            stage('Test') {
-                steps {
-                    sh './gradlew test'
-                    junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'java --version'
             }
         }
     }
-
-   post {
-        //success {
-          //  emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
-        //}
-        success {
-                mail to: 'janhavi.parte@thoughtworks.com',
-                     subject: "Pipeline Status : ${currentBuild.fullDisplayName}",
-                     body: "Check with : ${env.BUILD_URL}"
-                }
-         always {
-                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
-         }
-   }
 }
-
-
