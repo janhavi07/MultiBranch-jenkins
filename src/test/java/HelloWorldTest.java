@@ -16,7 +16,7 @@ public class HelloWorldTest {
     public void concatTwoWords(){
         HelloWorld obj=new HelloWorld();
         String yourName = obj.addYourName("janhavi", "parte");
-        Assert.assertEquals(yourName,"janhavi parte");
+        Assert.assertEquals(yourName,"janhavi ");
     }
 
     @Test
