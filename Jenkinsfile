@@ -1,16 +1,14 @@
 pipeline {
     agent any
-       triggers {
-              cron('H/15 * * * *')
-       }
        stages {
+       /*
             stage(' Build') {
                 steps {
                     retry(2) {
                         sh './gradlew build'
                     }
                 }
-            }
+            } */
             stage('Test') {
                 steps {
                     sh './gradlew jacocoTestCoverageVerification'
