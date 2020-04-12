@@ -15,6 +15,7 @@ pipeline {
                 steps {
                     sh './gradlew test'
                     junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
+                    step( [ $class: 'JacocoPublisher' ] )
             }
         }
     }

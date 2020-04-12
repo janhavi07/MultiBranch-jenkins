@@ -1,5 +1,39 @@
 plugins {
     id 'java'
+    id "jacoco"
+}
+jacoco{
+    toolVersion = '0.8.1'
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+    }
+}
+jacocoTestReport {
+    reports {
+        csv.enabled false
+        xml.enabled false
+        html {
+            enabled true
+            destination file("$buildDir/reports/jacoco")
+        }
+    }
+    executionData(test)
+}
+
+tasks.build.dependsOn(jacocoTestReport)
+
+test{
+    jacoco{
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpDir = file("$buildDir/jacoco/classpathdumps")
+    }
 }
 
 group 'org.example'
@@ -9,8 +43,10 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'https://plugins.gradle.org/m2/' }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
 }
