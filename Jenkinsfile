@@ -9,8 +9,6 @@ pipeline {
            stage('Test') {
                 steps {
                     sh './gradlew jacocoTestCoverageVerification'
-                    junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
-                    step( [ $class: 'JacocoPublisher' ] )
             }
         }
     }
