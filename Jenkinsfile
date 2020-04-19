@@ -22,7 +22,6 @@ pipeline {
                      body: "Check with : ${env.BUILD_URL}"
                 }
          always {
-                junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
                 jacoco maximumBranchCoverage: '60', maximumClassCoverage: '60', maximumComplexityCoverage: '60', maximumLineCoverage: '60', maximumMethodCoverage: '60', runAlways: true
          }
    }
