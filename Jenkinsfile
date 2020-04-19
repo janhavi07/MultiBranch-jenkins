@@ -20,7 +20,7 @@ pipeline {
                      body: "Check with : ${env.BUILD_URL}"
                 }
          always {
-                jacoco maximumBranchCoverage: '60', maximumClassCoverage: '60', maximumComplexityCoverage: '60', maximumLineCoverage: '60', maximumMethodCoverage: '60', runAlways: true
+                jacoco maximumBranchCoverage: '50', maximumClassCoverage: '60', maximumComplexityCoverage: '60', maximumLineCoverage: '60', maximumMethodCoverage: '60', runAlways: true
          }
    }
 }
