@@ -1,30 +1,21 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class HelloWorldTest {
 
-    @Test
-    public void addTwoNumbers() {
-        HelloWorld obj=new HelloWorld();
-        int result = obj.addTwoNumbers(12, 1);
-        Assert.assertEquals(result,13);
+    private HelloWorld subject;
+
+    @Before
+    public void setup() {
+        subject = new HelloWorld();
     }
 
     @Test
-    public void concatTwoWords(){
-        HelloWorld obj=new HelloWorld();
-        String yourName = obj.addYourName("janhavi", "parte");
-        Assert.assertEquals(yourName,"janhavi ");
+    public void testGetMessage() {
+        assertEquals("Hello World!", subject.getMessage(false));
     }
-
-    @Test
-    public void happySadMoods(){
-        HelloWorld obj=new HelloWorld();
-        boolean happySad = obj.happySad();
-        Assert.assertFalse(happySad);
-    }
-
 
 }

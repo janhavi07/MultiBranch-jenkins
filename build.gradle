@@ -1,15 +1,17 @@
 plugins {
     id 'java'
-    id "jacoco"
+    id 'jacoco'
 }
-jacoco{
+jacoco {
     toolVersion = '0.8.1'
 }
 jacocoTestCoverageVerification {
     violationRules {
         rule {
             limit {
-                minimum = 0.5
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.6
             }
         }
     }
@@ -18,23 +20,12 @@ jacocoTestReport {
     reports {
         csv.enabled false
         xml.enabled false
-        html {
-            enabled true
-            destination file("$buildDir/reports/jacoco")
-        }
+        html.enabled true
     }
     executionData(test)
 }
 
-tasks.build.dependsOn(jacocoTestReport)
-
-test{
-    jacoco{
-        append = false
-        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
-        classDumpDir = file("$buildDir/jacoco/classpathdumps")
-    }
-}
+//tasks.build.dependsOn(jacocoTestReport)
 
 group 'org.example'
 version '1.0-SNAPSHOT'

@@ -1,15 +1,12 @@
 pipeline {
     agent any
        stages {
-       /*
-            stage(' Build') {
+           stage(' Build') {
                 steps {
-                    retry(2) {
                         sh './gradlew build'
-                    }
                 }
-            } */
-            stage('Test') {
+            }
+           stage('Test') {
                 steps {
                     sh './gradlew jacocoTestCoverageVerification'
                     junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
@@ -19,9 +16,6 @@ pipeline {
     }
 
    post {
-        //success {
-          //  emailext body: 'BUILD WAS SUCCESSFULL', subject: 'Test build', to: 'janhavi.parte@thoughtworks.com'
-        //}
         success {
                 mail to: 'janhavi.parte@thoughtworks.com',
                      subject: "Pipeline Status : ${currentBuild.fullDisplayName}",
@@ -29,6 +23,7 @@ pipeline {
                 }
          always {
                 junit '/Users/janhavi.parte/Desktop/Multibranch/build/test-results/test/TEST-HelloWorldTest.xml'
+                jacoco maximumBranchCoverage: '60', maximumClassCoverage: '60', maximumComplexityCoverage: '60', maximumLineCoverage: '60', maximumMethodCoverage: '60', runAlways: true
          }
    }
 }
